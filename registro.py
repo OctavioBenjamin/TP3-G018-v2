@@ -44,7 +44,7 @@ def quitar_repetidos(numeros):
 
 def cargar_proyecto(n, proyectos, numeros):
     for i in range(n):
-        num = random.randint(1, 999)
+        num = random.randint(1, 99999)
         while num in numeros:
             num = random.randint(1, 999) 
         if num not in numeros:
@@ -68,7 +68,7 @@ def cargar_proyecto(n, proyectos, numeros):
 def cambiar_numeros(proyectos, numeros):
     for proyecto in proyectos:
         while proyecto.numero in numeros:
-            proyecto.numero = random.randint(100, 999)
+            proyecto.numero = random.randint(1, 99999)
         numeros.append(proyecto.numero)
 
 def menu():
@@ -96,6 +96,13 @@ def validar_mayor_que(limite, mensaje="Ingrese un numero: "):
         if numero <= limite:
             print(f"¡Error! El numero debe ser mayor a {limite}")
     return numero
+
+def validar_rango(inicio, limite):
+    numero = int(input(f"Ingrese un valor entre {inicio} y {limite}: "))
+    while limite < numero < inicio:
+        numero = int(input(f"Ingrese un valor entre {inicio} y {limite}: "))
+    return numero
+
 
 def ordenamiento_ss_num(proyectos):
     long= len(proyectos)
@@ -142,7 +149,7 @@ def binary_search_numeros(lista, filtro):
 def actualizar(proyecto, nuevas_lineas):
     proyecto.dia = random.randint(1, 30)
     proyecto.mes = random.randint(1, 12)
-    proyecto.año = random.randint(2000, 2022)
+    proyecto.año = random.randint(0, 22)
     proyecto.lineas = nuevas_lineas
 
 def contar_lineas(proyectos):
@@ -165,3 +172,10 @@ def mostrar_contador(contador):
     VB:         {contador[9]} lineas
     Go:         {contador[10]} lineas
     """)
+
+def filtrar_lenguaje(proyectos, filtro):
+    ordenamiento_ss_num(proyectos)
+    for proyecto in proyectos:
+        if proyecto.lenguaje == filtro:
+            print(toString(proyecto))
+

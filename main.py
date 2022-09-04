@@ -32,7 +32,6 @@ def main():
                 proyectos, numeros = cargar_proyecto(n, proyectos, numeros)
 
                 opcion = menu()
-
             elif opcion == 3:
                 
                 num_filtro = validar_mayor_que(0, "Ingrese un numero de proyecto a buscar: ")
@@ -43,6 +42,7 @@ def main():
                     nuevas_lineas = validar_mayor_que(0, "Nueva cantidad de lineas: ")
                     actualizar(proyectos[indice], nuevas_lineas)
                     print(f"ACTUALIZACION: {toString(proyectos[indice])}")
+                    
                 else:
                     print("No se ha encontrado el proyecto\n")
 
@@ -51,8 +51,27 @@ def main():
             elif opcion == 4:
                 contador = contar_lineas(proyectos)
                 mostrar_contador(contador)
+
+            elif opcion == 5:
+                #Esperando a carlos
+                pass
             
+            elif opcion == 6:
+                print("""0 - Python
+1 - Java
+2 - C++
+3 - Javascript
+4 - Shell
+5 - HTML
+6 - Ruby     
+7 - Swift    
+8 - C#      
+9 - VB       
+10 - Go""")
+                filtro_lenguaje = validar_rango(0, 10)
+                filtrar_lenguaje(proyectos, filtro_lenguaje)
             
+
 
 
 if __name__ == "__main__":
